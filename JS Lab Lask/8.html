@@ -1,4 +1,4 @@
-
+ 
 <html>
     <head>
         <title>Person Profile</title>
@@ -12,37 +12,38 @@
                 <tr>
                     <td>Name</td>
                     <td>
-                        <input type="text" name="" value="">
+                        <input type="text" name="name" id="name">
                     </td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>Email</td>
                     <td>
-                        <input type="mail" name="" value="">
+                        <input type="mail" name="email" id="email"  placeholder="text.sample@example.com">
                     </td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>Gender</td>
                     <td>
-                        <input type="radio" name="gender" value=""/>Male
-                        <input type="radio" name="gender" value=""/>Female
-                        <input type="radio" name="gender" value=""/>Other
+                        <input type="radio" name="gender" value="male"/>Male
+                        <input type="radio" name="gender" value="female"/>Female
+                        <input type="radio" name="gender" value="other"/>Other
                     </td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>Date of Birth</td>
                     <td>
-                        <input type="number" name="" value="">/<input type="number" name="" value=""><input type="number" name="" value="">(dd/m/yyy)
+                        <input type="number" name="" id="dd" value="date">/<input type="number" name="" id="mm" value="month"><input type="number" name="" id="yyyy" value="year">(dd/m/yyy)
                     </td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>Blood Group</td>
-                    <td> 
-                        <select name="">
+                    <td>
+                        <select id="blood">
+                            <option value="">select blood group</option>
                             <option value="O+">O+</option>
                             <option value="O-">O-</option>
                             <option value="A+">A+</option>
@@ -58,17 +59,17 @@
                 <tr>
                     <td>Degree</td>
                     <td>
-                        <input type="checkbox" name="" value=""/>SSC
-                        <input type="checkbox" name="" value=""/>HSC
-                        <input type="checkbox" name="" value=""/>BSc
-                        <input type="checkbox" name="" value=""/>MSc
+                        <input type="checkbox" name="Degree" value="SSC"/>SSC
+                        <input type="checkbox" name="degree" value="HSC"/>HSC
+                        <input type="checkbox" name="degree" value="BSc"/>BSc
+                        <input type="checkbox" name="degree" value="MSc"/>MSc
                     </td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>Photo</td>
                     <td colspan="2">
-                        <input type="file" name="" value="">
+                        <input type="file" id="photo">
                     </td>
                 </tr>
                 <tr>
@@ -76,11 +77,15 @@
                 </tr>
                 <tr>
                     <td colspan="3" align="right">
-                        <input type="submit" name="" value="Submit"/>
-                        <input type="reset" name="" value="Reset"/>
+                        <input type="submit" value="Submit" id="submitbtn"/>
+                        <input type="reset"  value="Reset"  />
                     </td>
                 </tr>
             </table>
         </fieldset>
+<p id="msg"></p>
+ 
+<script src="8.js"></script>
+         
     </body>
 </html>
