@@ -1,4 +1,4 @@
-let btn = document.getElementById("submitBtn");
+let btn = document.getElementById("submitbtn");
 
 btn.addEventListener("click", function(event){
 
