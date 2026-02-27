@@ -5,7 +5,7 @@ btn.addEventListener("click", function(event){
     let msg = document.getElementById("msg");
     msg.innerHTML = "";
 
-    // ---------- NAME ----------
+    
     let name = document.getElementById("name").value;
 
     if(name.trim() == ""){
@@ -32,7 +32,7 @@ btn.addEventListener("click", function(event){
         return;
     }
 
-    // ---------- EMAIL ----------
+    
     let email = document.getElementById("email").value;
 
     if(email.trim() == ""){
@@ -47,7 +47,7 @@ btn.addEventListener("click", function(event){
         return;
     }
 
-    // ---------- GENDER ----------
+    
     let g = document.getElementsByName("gender");
     let selected = false;
 
@@ -63,7 +63,7 @@ btn.addEventListener("click", function(event){
         return;
     }
 
-    // ---------- DATE ----------
+    
     let dd = document.getElementById("dd").value;
     let mm = document.getElementById("mm").value;
     let yyyy = document.getElementById("yyyy").value;
@@ -80,7 +80,7 @@ btn.addEventListener("click", function(event){
         return;
     }
 
-    // ---------- BLOOD ----------
+    
     let blood = document.getElementById("blood").value;
 
     if(blood==""){
@@ -89,7 +89,7 @@ btn.addEventListener("click", function(event){
         return;
     }
 
-    // ---------- DEGREE ----------
+    
     let degree = document.getElementsByName("degree");
     let ok = false;
 
@@ -105,7 +105,7 @@ btn.addEventListener("click", function(event){
         return;
     }
 
-    // ---------- PHOTO ----------
+
     let photo = document.getElementById("photo").value;
 
     if(photo==""){
