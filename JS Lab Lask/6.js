@@ -1,16 +1,18 @@
-let form = document.querySelector("form");
+let btn = document.getElementById('btn');
 
-form.addEventListener("submit", function(e){
-    e.preventDefault();
+btn.addEventListener('click', function(event){
 
-    let blood = document.getElementById("blood").value;
-    let msg = document.getElementById("msg");
+    event.preventDefault();
 
-    if(blood === ""){
-        msg.innerHTML = "Please select blood group!";
-        msg.style.color = "red";
-    }else{
-        msg.innerHTML = "Form submitted successfully!";
-        msg.style.color = "green";
+    let blood = document.getElementById('blood').value;
+    let msg = document.getElementById('msg');
+
+    msg.innerHTML = "";
+
+    if(blood == ""){
+        msg.innerHTML = "Select blood group";
+        return;
     }
+
+    msg.innerHTML = "Valid Selection";
 });
