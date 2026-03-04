@@ -1,11 +1,20 @@
 let btn = document.getElementById("submitbtn");
+<<<<<<< HEAD:JS Lab Task/8.js
  
+=======
+
+>>>>>>> f4bdbd15a2ac9bfffd91526b548f6dcad2b9672b:JS Lab Lask/8.js
 btn.addEventListener("click", function(event){
  
     let msg = document.getElementById("msg");
     msg.innerHTML = "";
+<<<<<<< HEAD:JS Lab Task/8.js
  
    
+=======
+
+    
+>>>>>>> f4bdbd15a2ac9bfffd91526b548f6dcad2b9672b:JS Lab Lask/8.js
     let name = document.getElementById("name").value;
  
     if(name.trim() == ""){
@@ -31,8 +40,13 @@ btn.addEventListener("click", function(event){
         event.preventDefault();
         return;
     }
+<<<<<<< HEAD:JS Lab Task/8.js
  
    
+=======
+
+    
+>>>>>>> f4bdbd15a2ac9bfffd91526b548f6dcad2b9672b:JS Lab Lask/8.js
     let email = document.getElementById("email").value;
  
     if(email.trim() == ""){
@@ -46,8 +60,13 @@ btn.addEventListener("click", function(event){
         event.preventDefault();
         return;
     }
+<<<<<<< HEAD:JS Lab Task/8.js
  
    
+=======
+
+    
+>>>>>>> f4bdbd15a2ac9bfffd91526b548f6dcad2b9672b:JS Lab Lask/8.js
     let g = document.getElementsByName("gender");
     let selected = false;
  
@@ -62,8 +81,13 @@ btn.addEventListener("click", function(event){
         event.preventDefault();
         return;
     }
+<<<<<<< HEAD:JS Lab Task/8.js
  
    
+=======
+
+    
+>>>>>>> f4bdbd15a2ac9bfffd91526b548f6dcad2b9672b:JS Lab Lask/8.js
     let dd = document.getElementById("dd").value;
     let mm = document.getElementById("mm").value;
     let yyyy = document.getElementById("yyyy").value;
@@ -79,8 +103,13 @@ btn.addEventListener("click", function(event){
         event.preventDefault();
         return;
     }
+<<<<<<< HEAD:JS Lab Task/8.js
  
    
+=======
+
+    
+>>>>>>> f4bdbd15a2ac9bfffd91526b548f6dcad2b9672b:JS Lab Lask/8.js
     let blood = document.getElementById("blood").value;
  
     if(blood==""){
@@ -88,8 +117,13 @@ btn.addEventListener("click", function(event){
         event.preventDefault();
         return;
     }
+<<<<<<< HEAD:JS Lab Task/8.js
  
  
+=======
+
+    
+>>>>>>> f4bdbd15a2ac9bfffd91526b548f6dcad2b9672b:JS Lab Lask/8.js
     let degree = document.getElementsByName("degree");
     let ok = false;
  
@@ -104,8 +138,13 @@ btn.addEventListener("click", function(event){
         event.preventDefault();
         return;
     }
+<<<<<<< HEAD:JS Lab Task/8.js
  
    
+=======
+
+
+>>>>>>> f4bdbd15a2ac9bfffd91526b548f6dcad2b9672b:JS Lab Lask/8.js
     let photo = document.getElementById("photo").value;
  
     if(photo==""){
@@ -117,4 +156,7 @@ btn.addEventListener("click", function(event){
    msg.innerHTML = "Form Submitted Successfully ";
 return true;
 });
+<<<<<<< HEAD:JS Lab Task/8.js
  
+=======
+>>>>>>> f4bdbd15a2ac9bfffd91526b548f6dcad2b9672b:JS Lab Lask/8.js
