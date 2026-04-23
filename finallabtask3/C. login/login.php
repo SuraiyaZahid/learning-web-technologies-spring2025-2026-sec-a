@@ -1,108 +1,88 @@
 <?php
-session_start();
+    session_start();
 
-$username = "";
-$password = "";
-$error = "";
+    if(isset($_SESSION['status']) && $_SESSION['status'] == true){
+        header('location: logged_in_dashboard.php');
+        exit();
+    }
 
-if (isset($_COOKIE["remember_username"])) {
-    $username = $_COOKIE["remember_username"];
-}
+    $error = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = trim($_POST["username"]);
-    $password = $_POST["password"];
-    $remember = isset($_POST["remember"]);
+    if(isset($_POST['submit'])){
+        $username = $_REQUEST['username'];
+        $password = $_REQUEST['password'];
 
-    if ($username == "" || $password == "") {
-        $error = "Username and password required.";
-    } else {
-        if (isset($_SESSION["users"])) {
-            $found = false;
+        if($username == "" || $password == ""){
+            $error = "Username and password are required!";
+        }
+        else{
+            $user_found = false;
 
-            foreach ($_SESSION["users"] as $user) {
-                if ($user["username"] == $username && $user["password"] == $password) {
-                    $_SESSION["logged_in"] = true;
-                    $_SESSION["current_user"] = $user["username"];
-                    $found = true;
+            if(isset($_SESSION['all_users'])){
+                foreach($_SESSION['all_users'] as $user){
 
-                    if ($remember) {
-                        setcookie("remember_username", $username, time() + 86400 * 30, "/");
-                    } else {
-                        setcookie("remember_username", "", time() - 3600, "/");
+                    if(($user['username'] == $username || $user['email'] == $username) && $user['password'] == $password){
+
+                        $user_found = true;
+
+                        $_SESSION['username'] = $user['username'];
+                        $_SESSION['email'] = $user['email'];
+                        $_SESSION['gender'] = $user['gender'];
+                        $_SESSION['dob'] = $user['dob'];
+                        $_SESSION['profile_picture'] = $user['profile_picture'];
+                        $_SESSION['password'] = $user['password'];
+                        $_SESSION['status'] = true;
+
+                        header('location: logged_in_dashboard.php');
+                        exit();
                     }
-
-                    header("Location: dashboard.php");
-                    exit();
                 }
             }
 
-            if (!$found) {
-                $error = "Invalid username or password.";
+            if($user_found == false){
+                $error = "Invalid username/email or password!";
             }
-        } else {
-            $error = "No registered user found.";
         }
     }
-}
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
 
-    <div class="header">
-        <div class="logo">XCompany</div>
-        <div class="nav">
-            <a href="index.php">Home</a> |
-            <a href="login.php">Login</a> |
-            <a href="registration.php">Registration</a>
-        </div>
-    </div>
+<div style="width:500px; margin:auto; border:1px solid black; padding:20px;">
 
-    <div class="content">
-        <div class="form-box">
-            <fieldset>
-                <legend>LOGIN</legend>
+    <a href="A.php">Home | </a>
+    <a href="C.php">Login | </a>
+    <a href="B.php">Registration</a>
 
-                <?php
-                if ($error != "") {
-                    echo "<p class='error'>$error</p>";
-                }
-                ?>
+    <br><br>
 
-                <form method="post" action="">
-                    <table>
-                        <tr>
-                            <td>User Name</td>
-                            <td>: <input type="text" name="username" value="<?php echo $username; ?>"></td>
-                        </tr>
-                        <tr>
-                            <td>Password</td>
-                            <td>: <input type="password" name="password"></td>
-                        </tr>
-                    </table>
+    <h3>Login</h3>
 
-                    <hr>
+    <?php
+        if($error != ""){
+            echo "<p style='color:red;'>$error</p>";
+        }
+    ?>
 
-                    <input type="checkbox" name="remember"> Remember Me
-                    <br><br>
+    <form method="post" action="">
+        Username: <input type="text" name="username"><br><br>
+        Password: <input type="password" name="password"><br><hr>
 
-                    <input type="submit" value="Submit">
-                    <a href="forgot_password.php">Forgot Password?</a>
-                </form>
-            </fieldset>
-        </div>
-    </div>
+        <input type="checkbox" name="remember_me"> Remember Me <br><br>
 
-    <div class="footer">
-        Copyright &copy; 2017
-    </div>
+        <input type="submit" name="submit" value="Submit">
+        <a href="D.php">Forgot Password?</a>
+    </form>
+
+    <hr>
+    <p style="text-align:center;">Copyright &copy; 2017</p>
 
 </div>
+
 </body>
 </html>
