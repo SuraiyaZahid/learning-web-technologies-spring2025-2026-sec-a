@@ -1,32 +1,59 @@
 <?php
-session_start();
+    // session_start();
+    
+    // if(isset($_SESSION['status']) && $_SESSION['status'] == true){
+    //     header('location: logged_in_dashboard.php');
+    //     exit();
+    // }
 ?>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Public Home</title>
-    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+
+        .box {
+            width: 600px;
+            margin: 40px auto;
+            border: 1px solid black;
+            padding: 20px;
+        }
+
+        .nav {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
+
 <body>
-<div class="container">
 
-    <div class="header">
-        <div class="logo">XCompany</div>
-        <div class="nav">
-            <a href="index.php">Home</a> |
-            <a href="login.php">Login</a> |
-            <a href="registration.php">Registration</a>
-        </div>
+<div class="box">
+
+    <div class="nav">
+        <a href="A.php">Home</a> |
+        <a href="C.php">Login</a> |
+        <a href="B.php">Registration</a>
     </div>
 
-    <div class="content home-content">
-        <h2>Welcome to xCompany</h2>
-    </div>
+    <h2>Welcome to X Company</h2>
 
-    <div class="footer">
-        Copyright &copy; 2017
-    </div>
+    <hr>
+
+    <p>Copyright &copy; 2017</p>
 
 </div>
-</body>
+
+</body> 
 </html>
+
+<?php
+    // echo "Welcome to X company."; 
+?>

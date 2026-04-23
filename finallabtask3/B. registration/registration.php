@@ -1,153 +1,96 @@
 <?php
-session_start();
+    session_start();
 
-$name = "";
-$email = "";
-$username = "";
-$password = "";
-$confirm_password = "";
-$gender = "";
-$day = "";
-$month = "";
-$year = "";
-$error = "";
-$success = "";
+    if(!isset($_SESSION['all_users'])){
+        $_SESSION['all_users'] = [];
+    }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if(isset($_POST['submit'])){
 
-    $name = trim($_POST["name"]);
-    $email = trim($_POST["email"]);
-    $username = trim($_POST["username"]);
-    $password = $_POST["password"];
-    $confirm_password = $_POST["confirm_password"];
-    $gender = isset($_POST["gender"]) ? $_POST["gender"] : "";
-    $day = trim($_POST["day"]);
-    $month = trim($_POST["month"]);
-    $year = trim($_POST["year"]);
+        $name = $_REQUEST['name'];
+        $email = $_REQUEST['email'];
+        $password = $_REQUEST['password'];
+        $confirm_password = $_REQUEST['confirm_password'];
+        $gender = $_REQUEST['gender'] ?? "";
+        $dd = $_REQUEST['dd'] ?? "";
+        $mm = $_REQUEST['mm'] ?? "";
+        $yyyy = $_REQUEST['yyyy'] ?? "";
 
-    if ($name == "" || $email == "" || $username == "" || $password == "" || $confirm_password == "" || $gender == "" || $day == "" || $month == "" || $year == "") {
-        $error = "All fields are required.";
-    } elseif (strpos($email, "@") == false || strpos($email, ".") == false) {
-        $error = "Invalid email.";
-    } elseif ($password != $confirm_password) {
-        $error = "Password and confirm password must match.";
-    } else {
+        $dob = $dd . "/" . $mm . "/" . $yyyy;
 
-        if (!isset($_SESSION["users"])) {
-            $_SESSION["users"] = array();
+        // very simple check
+        if($password == $confirm_password){
+
+            $new_user = [
+                'username' => $name,
+                'email' => $email,
+                'password' => $password,
+                'gender' => $gender,
+                'dob' => $dob,
+                'profile_picture' => "default.png"
+            ];
+
+            $_SESSION['all_users'][] = $new_user;
+
+            header('location: C.php');
         }
-
-        $found = false;
-        foreach ($_SESSION["users"] as $user) {
-            if ($user["username"] == $username || $user["email"] == $email) {
-                $found = true;
-                break;
-            }
-        }
-
-        if ($found) {
-            $error = "Username or email already exists.";
-        } else {
-            $dob = $day . "/" . $month . "/" . $year;
-
-            $newUser = array(
-                "name" => $name,
-                "email" => $email,
-                "username" => $username,
-                "password" => $password,
-                "gender" => $gender,
-                "dob" => $dob,
-                "picture" => "default.png"
-            );
-
-            $_SESSION["users"][] = $newUser;
-            $success = "Registration successful. <a href='login.php'>Login now</a>.";
+        else{
+            echo "Password not matched!";
         }
     }
-}
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Registration</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
 
-    <div class="header">
-        <div class="logo">XCompany</div>
-        <div class="nav">
-            <a href="index.php">Home</a> |
-            <a href="login.php">Login</a> |
-            <a href="registration.php">Registration</a>
-        </div>
-    </div>
+<div style="width:500px; margin:auto; border:1px solid black; padding:20px;">
 
-    <div class="content">
-        <div class="form-box">
-            <fieldset>
-                <legend>REGISTRATION</legend>
+<a href="A.php">Home | </a>
+<a href="C.php">Login | </a>
+<a href="B.php">Registration</a>
 
-                <?php
-                if ($error != "") {
-                    echo "<p class='error'>$error</p>";
-                }
-                if ($success != "") {
-                    echo "<p class='success'>$success</p>";
-                }
-                ?>
+<br><br>
 
-                <form method="post" action="">
-                    <table>
-                        <tr>
-                            <td>Name</td>
-                            <td>: <input type="text" name="name" value="<?php echo $name; ?>"></td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td>: <input type="text" name="email" value="<?php echo $email; ?>"></td>
-                        </tr>
-                        <tr>
-                            <td>User Name</td>
-                            <td>: <input type="text" name="username" value="<?php echo $username; ?>"></td>
-                        </tr>
-                        <tr>
-                            <td>Password</td>
-                            <td>: <input type="password" name="password"></td>
-                        </tr>
-                        <tr>
-                            <td>Confirm Password</td>
-                            <td>: <input type="password" name="confirm_password"></td>
-                        </tr>
-                    </table>
+<h3>Registration</h3>
 
-                    <fieldset>
-                        <legend>Gender</legend>
-                        <input type="radio" name="gender" value="Male" <?php if ($gender=="Male") echo "checked"; ?>> Male
-                        <input type="radio" name="gender" value="Female" <?php if ($gender=="Female") echo "checked"; ?>> Female
-                        <input type="radio" name="gender" value="Other" <?php if ($gender=="Other") echo "checked"; ?>> Other
-                    </fieldset>
+<form method="post">
 
-                    <fieldset>
-                        <legend>Date of Birth</legend>
-                        <input type="text" name="day" size="2" value="<?php echo $day; ?>"> /
-                        <input type="text" name="month" size="2" value="<?php echo $month; ?>"> /
-                        <input type="text" name="year" size="4" value="<?php echo $year; ?>"> (dd/mm/yyyy)
-                    </fieldset>
+Name: <input type="text" name="name"><br><hr>
 
-                    <br>
-                    <input type="submit" value="Submit">
-                    <input type="reset" value="Reset">
-                </form>
-            </fieldset>
-        </div>
-    </div>
+Email: <input type="text" name="email"><br><hr>
 
-    <div class="footer">
-        Copyright &copy; 2017
-    </div>
+Password: <input type="password" name="password"><br><hr>
+
+Confirm Password: <input type="password" name="confirm_password"><br><hr>
+
+Gender:
+<input type="radio" name="gender" value="male"> Male
+<input type="radio" name="gender" value="female"> Female
+<input type="radio" name="gender" value="other"> Other
+
+<hr>
+
+DOB:
+<input type="text" name="dd" size="2"> /
+<input type="text" name="mm" size="2"> /
+<input type="text" name="yyyy" size="4">
+
+<hr>
+
+<input type="submit" name="submit" value="Submit">
+<input type="reset" value="Reset">
+
+</form>
+
+<hr>
+
+<p style="text-align:center;">Copyright &copy; 2017</p>
 
 </div>
+
 </body>
 </html>
