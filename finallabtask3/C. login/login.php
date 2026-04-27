@@ -33,7 +33,7 @@
                         $_SESSION['password'] = $user['password'];
                         $_SESSION['status'] = true;
 
-                        header('location: logged_in_dashboard.php');
+                        header('location: ../E. logged in dashboard/logged_dashboard.php');
                         exit();
                     }
                 }
@@ -55,9 +55,9 @@
 
 <div style="width:500px; margin:auto; border:1px solid black; padding:20px;">
 
-    <a href="A.php">Home | </a>
-    <a href="C.php">Login | </a>
-    <a href="B.php">Registration</a>
+    <a href="../A. public home/public_home.php">Home | </a>
+    <a href="../C. login/login.php">Login | </a>
+    <a href="../B. registration/registration.php">Registration</a>
 
     <br><br>
 

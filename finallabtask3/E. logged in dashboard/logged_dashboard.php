@@ -10,7 +10,7 @@
     if(isset($_GET['page']) && $_GET['page'] == 'logout'){
         setcookie('remember_username', '', time() - 3600, '/');
         session_destroy();
-        header('location: C.php');
+        header('location: ../C. login/login.php');
         exit();
     }
 ?>

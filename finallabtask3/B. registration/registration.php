@@ -32,7 +32,7 @@
 
             $_SESSION['all_users'][] = $new_user;
 
-            header('location: C.php');
+            header('location: ../C. login/login.php');
         }
         else{
             echo "Password not matched!";
@@ -49,9 +49,9 @@
 
 <div style="width:500px; margin:auto; border:1px solid black; padding:20px;">
 
-<a href="A.php">Home | </a>
-<a href="C.php">Login | </a>
-<a href="B.php">Registration</a>
+<a href="../A. public home/public_home.php">Home | </a>
+<a href="../C. login/login.php">Login | </a>
+<a href="../B. registration/registration.php">Registration</a>
 
 <br><br>
 

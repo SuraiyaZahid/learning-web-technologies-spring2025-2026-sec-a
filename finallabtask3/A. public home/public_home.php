@@ -38,9 +38,9 @@
 <div class="box">
 
     <div class="nav">
-        <a href="A.php">Home</a> |
-        <a href="C.php">Login</a> |
-        <a href="B.php">Registration</a>
+        <a href="../A. public home/public_home.php">Home</a> |
+        <a href="../C. login/login.php">Login</a> |
+        <a href="../B. registration/registration.php">Registration</a>
     </div>
 
     <h2>Welcome to X Company</h2>
